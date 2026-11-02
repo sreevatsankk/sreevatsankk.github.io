@@ -766,6 +766,17 @@ body {
   color: var(--sk-muted);
 }
 
+/* A page's optional `tagline`, on its own line under the main heading */
+
+.page__tagline {
+  display: block;
+  margin-top: 0.3em;
+  font-size: 0.6em;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--sk-muted);
+}
+
 /*
    Sidebar name: a paragraph, so that each page's headings start at its h1
    ========================================================================== */

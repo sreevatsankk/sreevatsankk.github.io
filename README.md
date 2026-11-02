@@ -36,7 +36,7 @@ Create `_publications/YYYY-MM-DD-short-name.md`. `category` is one of the keys u
 ```yaml
 ---
 title: "Paper title"
-category: conferences          # or: short
+category: conferences          # or: short, other
 type: Demo                     # optional tag, e.g. Demo, Poster, Work-in-Progress
 date: 2027-05-01
 venue: "ACM SIGCOMM 2027"

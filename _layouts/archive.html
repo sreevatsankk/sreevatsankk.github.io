@@ -17,7 +17,7 @@ layout: default
 
   <div class="archive">
     {% unless page.header.overlay_color or page.header.overlay_image %}
-      <h1 class="page__title">{{ page.title | escape_once }}</h1>
+      <h1 class="page__title">{{ page.title | escape_once }}{% if page.tagline %} <span class="page__tagline">{{ page.tagline | escape_once }}</span>{% endif %}</h1>
     {% endunless %}
     {{ content }}
   </div>

@@ -88,6 +88,8 @@ publication_category:
     title: 'Conference Papers'
   short:
     title: 'Demos, Posters & Short Papers'
+  other:
+    title: 'Other Publications'
 
 # Optional PDF of your CV, placed in /files/ (e.g. "Sreevatsank_Kadaveru_CV.pdf").
 # When set, the CV page shows a download button.
