@@ -1,6 +1,9 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae — Sreevatsank Kadaveru"
+seo_title: "CV — Sreevatsank Kadaveru | Ph.D. Student at UC San Diego"
+description: "Curriculum Vitae of Sreevatsank Kadaveru: ECE Ph.D. student at UCSD, Qualcomm Innovation Fellow 2026, with research experience at Qualcomm, JASR and IIT Indore."
+schema_type: ProfilePage
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -12,12 +15,14 @@ redirect_from:
 
 {% comment %}
   This page mirrors the resume: same sections, same order, same sentences, and the same
-  link labels. Update it when the resume changes.
+  link labels. Its own additions are links only: project names point to their pages, and
+  documents point to copies in /files/. Update it when the resume changes, and rebuild the
+  PDF copy with the web CV tool.
 {% endcomment %}
 
 {% if site.cv_pdf %}
 <div class="cv-actions">
-  <a class="btn-link" href="{{ base_path }}/files/{{ site.cv_pdf }}"><i class="fa-solid fa-download" aria-hidden="true"></i> Download PDF</a>
+  <a class="btn-link btn-link--primary" href="{{ base_path }}/files/{{ site.cv_pdf }}"><i class="fa-solid fa-download" aria-hidden="true"></i> Download PDF CV</a>
 </div>
 {% endif %}
 
@@ -62,7 +67,7 @@ redirect_from:
     <span class="cv-entry__title"><strong>WRD, Qualcomm</strong>, <em>Research Intern</em>, San Diego.</span>
     <span class="cv-entry__when">Jun’26–Sept’26</span>
   </div>
-  <p class="cv-entry__note">Developed a rigorous framework to study LLMs for RF+Vision based multimodal sensing tasks, to identify and isolate failures to gaps in domain knowledge, domain reasoning or domain-specific data interpretation, and prescribe targeted fine-tuning remedies.</p>
+  <p class="cv-entry__note">Developed a rigorous framework to study <a href="{{ base_path }}/research/llm-sensing/">LLMs for RF+Vision based multimodal sensing tasks</a>, to identify and isolate failures to gaps in domain knowledge, domain reasoning or domain-specific data interpretation, and prescribe targeted fine-tuning remedies.</p>
 </div>
 
 <div class="cv-entry">
@@ -70,9 +75,9 @@ redirect_from:
     <span class="cv-entry__title"><strong>JASR Systems</strong>, <em>Research Intern</em>, San Diego.</span>
     <span class="cv-entry__when">Jun’22–Sept’22</span>
   </div>
-  <p class="cv-entry__note">Blind Detection and Tracking of Low Probability of Intercept Signals.</p>
+  <p class="cv-entry__note"><a href="{{ base_path }}/research/specsense/">Blind Detection and Tracking of Low Probability of Intercept Signals</a>.</p>
   <ul>
-    <li>Developed a novel statistical approach for wideband spectrum sensing, improving state-of-the-art prediction and enabling multi-receiver capability via an optimal cooperative scheduling algorithm. <a href="https://drive.google.com/file/d/16-F9lr1lG-SX6eIBbNx_kEmRo0NkkKR_/view?usp=sharing">[Poster]</a></li>
+    <li>Developed a novel statistical approach for wideband spectrum sensing, improving state-of-the-art prediction and enabling multi-receiver capability via an optimal cooperative scheduling algorithm. <a href="{{ base_path }}/files/SpecSense_Poster.pdf">[Poster]</a></li>
   </ul>
 </div>
 
@@ -89,7 +94,7 @@ redirect_from:
     <span class="cv-entry__title"><strong>Télécom Paris</strong>, <em>Summer Research Intern</em>, France.</span>
     <span class="cv-entry__when">May’19–Aug’19</span>
   </div>
-  <p class="cv-entry__note">Improving Reliability of MIMO Mission Critical Systems using LDPC in 5G.</p>
+  <p class="cv-entry__note"><a href="{{ base_path }}/research/ldpc-mimo/">Improving Reliability of MIMO Mission Critical Systems using LDPC in 5G</a>.</p>
   <ul>
     <li>Demonstrated a novel latency-reliability trade-off in LDPC code selection for video traffic</li>
   </ul>
@@ -103,17 +108,17 @@ redirect_from:
     <span class="cv-entry__when">Jun’25–Now</span>
   </div>
   <ul>
-    <li><strong>PAIQoO</strong>: Quantifying the network requirements of Physical AI applications
+    <li><strong><a href="{{ base_path }}/research/paiqoo/">PAIQoO</a></strong>: Quantifying the network requirements of Physical AI applications
       <ul>
         <li>Characterizing how sensor fidelity and end-to-end latency trade off in robotic task performance</li>
       </ul>
     </li>
-    <li><strong>mmsRAN</strong>: Radio Access Networks for Physical AI <a href="https://dl.acm.org/doi/abs/10.1145/3795866.3844782">[Paper]</a>
+    <li><strong><a href="{{ base_path }}/research/mmsran/">mmsRAN</a></strong>: Radio Access Networks for Physical AI <a href="https://dl.acm.org/doi/abs/10.1145/3795866.3844782">[Paper]</a>
       <ul>
         <li>Building an Uplink Scheduler for Multimodal sensor flows that need to be low latency, synchronized and in lock-step order.</li>
       </ul>
     </li>
-    <li><strong>P2SIF</strong>: Plug-n-Play Sensor Integration Framework <a href="https://drive.google.com/file/d/1ftWI2YqR6nS3bKjvxw3UFfHv4UBvn5-R/view?usp=drive_link">[Proposal]</a>
+    <li><strong><a href="{{ base_path }}/research/p2sif/">P2SIF</a></strong>: Plug-n-Play Sensor Integration Framework <a href="{{ base_path }}/files/P2SIF_Proposal.pdf">[Proposal]</a>
       <ul>
         <li>Developed a decoupled architecture for new modality integration into existing LLMs without needing to modify LLM weights</li>
       </ul>
@@ -127,13 +132,13 @@ redirect_from:
     <span class="cv-entry__when">2024–2026</span>
   </div>
   <ul>
-    <li><strong>PHYNet</strong>: A gold-standard PHY layer labelled dataset
+    <li><strong><a href="{{ base_path }}/research/phynet/">PHYNet</a></strong>: A gold-standard PHY layer labelled dataset
       <ul>
         <li>Establishing a standard for evaluating PHY layer algorithms by building a multi-purpose labelled PHY dataset</li>
         <li>Studied the problem of PHY spectrum ignorance in today’s world</li>
       </ul>
     </li>
-    <li><strong>CamoPHYlage</strong>: Hiding signals in plain sight
+    <li><strong><a href="{{ base_path }}/research/camophylage/">CamoPHYlage</a></strong>: Hiding signals in plain sight
       <ul>
         <li>Developed adversarial mimicking techniques to evade all PHY layer detectors, enabling surreptitious communication in plain sight</li>
       </ul>
@@ -147,12 +152,12 @@ redirect_from:
     <span class="cv-entry__when">Nov’22–Mar’24</span>
   </div>
   <ul>
-    <li><strong>rfYOLO</strong>: Phase modality for better detection
+    <li><strong><a href="{{ base_path }}/research/rfyolo/">rfYOLO</a></strong>: Phase modality for better detection
       <ul>
         <li>Developed phase transform to improve PHY layer characterisation of signals using YOLO networks</li>
       </ul>
     </li>
-    <li><strong>Nomad</strong>: Architected a high throughput spectrum sensing system with a line rate of 40Gbit/s <a href="https://drive.google.com/file/d/15gvXOEjitIAZ4lNCMfmY53ZiFbotwcAT/view?usp=share_link">[Link]</a>
+    <li><strong><a href="{{ base_path }}/research/nomad/">Nomad</a></strong>: Architected a high throughput spectrum sensing system with a line rate of 40Gbit/s <a href="{{ base_path }}/research/nomad/">[Link]</a>
       <ul>
         <li>Developed containerised micro-services with well-defined high throughput shared memory interface</li>
         <li>Achieved major throughput gains with the use of copy-efficient shared memory and a Redis-based in-memory database.</li>
@@ -167,7 +172,7 @@ redirect_from:
     <span class="cv-entry__when">Mar’22–Nov’22</span>
   </div>
   <ul>
-    <li><strong>Curriculum FL</strong>: Studied effect of curriculum learning in a federated context. We showed that curriculum can significantly improve convergence time of training. <a href="https://arxiv.org/pdf/2212.12712">[Paper]</a></li>
+    <li><strong><a href="{{ base_path }}/research/curriculum-fl/">Curriculum FL</a></strong>: Studied effect of curriculum learning in a federated context. We showed that curriculum can significantly improve convergence time of training. <a href="https://arxiv.org/pdf/2212.12712">[Paper]</a></li>
   </ul>
 </div>
 
@@ -179,17 +184,18 @@ redirect_from:
     <span class="cv-entry__when">2021–22</span>
   </div>
   <ul>
-    <li><strong>Audio-StyleCLIP</strong>: Extended capabilities of StyleCLIP and AudioCLIP models to create a model that can perform style transfer onto an image using an audio styling input. <a href="https://drive.google.com/file/d/1biQZ1JpUo6wGrkgxCDXgFUj3jyIyM5pi/view?usp=share_link">[Report]</a></li>
-    <li><strong>Convexifying Neural Network</strong>: Implemented the state-of-the-art technique for modelling a ReLU neural network as a convex optimisation problem, the solution of which is a globally optimal neural network. <a href="https://drive.google.com/file/d/1oQ5uePAY4xqVClkPVKg0cJHYh6mJmI7q/view?usp=share_link">[Report]</a></li>
-    <li><strong>Training Robust NN</strong>: Implemented Lipschitz constant based regularization for training robust Neural Networks and compared performance against L<sub>2</sub> and other baseline techniques. <a href="https://drive.google.com/file/d/1s24inNgky8aMOULbqM97ZtEZ4uGbdVYB/view?usp=drive_link">[Report]</a></li>
-    <li><strong>Lattice Basis Reduction Performance Study</strong>: We evaluate the basis reduction algorithms, such as LLL, BKZ, Slide, Self-dual BKZ, to study accuracy vs performance trade-off on COTS hardware. We also study scaling of these algorithms with problem size. <a href="https://drive.google.com/file/d/1IT7jyHXKjPVILGaSXuS-YBVUZCNKq731/view?usp=drive_link">[Report]</a></li>
+    <li><strong><a href="{{ base_path }}/research/audio-styleclip/">Audio-StyleCLIP</a></strong>: Extended capabilities of StyleCLIP and AudioCLIP models to create a model that can perform style transfer onto an image using an audio styling input. <a href="{{ base_path }}/files/Audio-StyleCLIP_Report.pdf">[Report]</a></li>
+    <li><strong><a href="{{ base_path }}/research/convex-nn/">Convexifying Neural Network</a></strong>: Implemented the state-of-the-art technique for modelling a ReLU neural network as a convex optimisation problem, the solution of which is a globally optimal neural network. <a href="{{ base_path }}/files/Convexifying_Neural_Networks_Report.pdf">[Report]</a></li>
+    <li><strong><a href="{{ base_path }}/research/robust-nn/">Training Robust NN</a></strong>: Implemented Lipschitz constant based regularization for training robust Neural Networks and compared performance against L<sub>2</sub> and other baseline techniques. <a href="{{ base_path }}/files/Training_Robust_Neural_Networks_Report.pdf">[Report]</a></li>
+    <li><strong><a href="{{ base_path }}/research/lattice/">Lattice Basis Reduction Performance Study</a></strong>: We evaluate the basis reduction algorithms, such as LLL, BKZ, Slide, Self-dual BKZ, to study accuracy vs performance trade-off on COTS hardware. We also study scaling of these algorithms with problem size. <a href="{{ base_path }}/files/Lattice_Basis_Reduction_Report.pdf">[Report]</a></li>
   </ul>
 </div>
 
 <h2 class="section-title">Publications</h2>
 
-<p class="cv-row"><span><strong>MobiCom’26</strong>: “RoboNEST: Robotics Networked Edge Systems Testbed for Physical AI”. <a href="https://dl.acm.org/doi/abs/10.1145/3795866.3848480">[Demo]</a></span></p>
+<p class="cv-row"><span><strong>MobiCom’26</strong>: “<a href="{{ base_path }}/research/robonest/">RoboNEST: Robotics Networked Edge Systems Testbed for Physical AI</a>”. <a href="https://dl.acm.org/doi/abs/10.1145/3795866.3848480">[Demo]</a></span></p>
 <p class="cv-row"><span><strong>MobiCom’26</strong>: “WiP: mmsRAN: Multimodal Cellular Uplink for Physical AI”. <a href="https://dl.acm.org/doi/abs/10.1145/3795866.3844782">[Paper]</a></span></p>
+<p class="cv-row"><span><strong>ISSCC’26</strong>: “CANCEL: A Cancellation-Aided Ambient IoT Nanopowered Communication System for Energy-Limited Tags”. <a href="https://doi.org/10.1109/ISSCC49663.2026.11409235">[Paper]</a></span></p>
 <p class="cv-row"><span><strong>MobiCom’24</strong>: “Nomad: Providing Insights into the Spectrum Environment”. <a href="https://dl.acm.org/doi/pdf/10.1145/3636534.3698867">[Paper]</a></span></p>
 <p class="cv-row"><span><strong>ICCV’23</strong>: “When Do Curricula Work in Federated Learning?”. <a href="https://arxiv.org/abs/2212.12712">[Paper]</a></span></p>
 

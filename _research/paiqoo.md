@@ -1,9 +1,12 @@
 ---
 title: "PAIQoO: Quantifying the Network Requirements of Physical AI"
+seo_title: "PAIQoO: Network Needs of Physical AI | Sreevatsank Kadaveru"
+description: "PAIQoO quantifies the network requirements of Physical AI by characterizing how sensor fidelity, latency, and radio conditions determine task performance."
 group: physical-ai
 order: 5
 period: "2025 – present"
-image: /images/research/paiqoo.png
+image: /images/research/paiqoo.webp
+image_size: [1300, 689]
 image_alt: "Multimodal sensor fusion at the edge: per-user sensor flows, flow-aware scheduling in the RAN, and a sensing model at the edge application"
 badges: ["In progress"]
 ---

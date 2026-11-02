@@ -1,13 +1,16 @@
 ---
 layout: archive
-title: "Research"
+title: "Research in Physical AI, Multimodal Sensing & Wireless Systems"
+seo_title: "Research Projects: Physical AI & 5G Sensing | Sreevatsank K."
+description: "Explore research projects on Physical AI testbeds (RoboNEST), multimodal cellular uplink scheduling (mmsRAN), LLM sensor fusion (P2SIF), and PHY-layer sensing."
+schema_type: CollectionPage
 permalink: /research/
 author_profile: true
 ---
 
 {% include base_path %}
 
-<p class="section-intro">Selected projects, organized by theme. Select a project in the PHY-layer and earlier research sections to expand its description.</p>
+<p class="section-intro">Selected projects, organized by theme. Each project has its own page; select a box in the PHY-layer and earlier research sections to expand it here.</p>
 
 {% for group in site.data.research_groups %}
   {% assign projects = site.research | where: "group", group.id | sort: "order" %}
@@ -23,30 +26,29 @@ author_profile: true
       <details class="mini-card mini-card--expandable" id="{{ p.slug }}">
         <summary class="mini-card__summary">
           <span class="project-figure">
-            {% if p.image %}<img src="{{ base_path }}{{ p.image }}" alt="{{ p.image_alt | default: p.title }}" loading="lazy">{% else %}<span class="project-figure__placeholder"><i class="fa-solid fa-wave-square" aria-hidden="true"></i></span>{% endif %}
+            {% if p.image %}<img src="{{ base_path }}{{ p.image }}" alt="{{ p.image_alt | default: p.title }}" width="{{ p.image_size[0] }}" height="{{ p.image_size[1] }}" loading="lazy">{% else %}<span class="project-figure__placeholder"><i class="fa-solid fa-wave-square" aria-hidden="true"></i></span>{% endif %}
           </span>
           <h3 class="mini-card__title">{{ p.title }}</h3>
           <span class="mini-card__sub">{{ p.period }}{% for badge in p.badges %} &middot; {{ badge }}{% endfor %}</span>
-          <span class="mini-card__teaser">{{ p.teaser }}</span>
+          <span class="mini-card__teaser">{{ p.teaser | smartify }}</span>
           <span class="mini-card__more"><span class="mini-card__more-closed">Details</span><span class="mini-card__more-open">Hide details</span> <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
         </summary>
         <div class="mini-card__body">
           {% if p.team %}<p class="mini-card__team">{{ p.team }}</p>{% endif %}
-          {{ p.content | markdownify }}
-          {% if p.links or p.image %}
+          {{ p.content }}
           <div class="link-row">
+            <a class="btn-link" href="{{ base_path }}{{ p.url }}"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Project details</a>
             {% include link-buttons.html links=p.links %}
             {% if p.image %}<a class="btn-link" href="{{ base_path }}{{ p.image }}" target="_blank" rel="noopener"><i class="fa-solid fa-image" aria-hidden="true"></i> Figure</a>{% endif %}
           </div>
-          {% endif %}
         </div>
       </details>
       {% else %}
       <article class="mini-card" id="{{ p.slug }}">
-        {% if p.image %}<a class="project-figure" href="{{ base_path }}{{ p.image }}" target="_blank" rel="noopener"><img src="{{ base_path }}{{ p.image }}" alt="{{ p.image_alt | default: p.title }}" loading="lazy"></a>{% endif %}
-        <h3 class="mini-card__title">{{ p.title }}</h3>
+        {% if p.image %}<a class="project-figure" href="{{ base_path }}{{ p.image }}" target="_blank" rel="noopener"><img src="{{ base_path }}{{ p.image }}" alt="{{ p.image_alt | default: p.title }}" width="{{ p.image_size[0] }}" height="{{ p.image_size[1] }}" loading="lazy"></a>{% endif %}
+        <h3 class="mini-card__title"><a href="{{ base_path }}{{ p.url }}">{{ p.title }}</a></h3>
         {% if p.course or p.team %}<div class="mini-card__sub">{{ p.course }}{% if p.course and p.team %} &middot; {% endif %}{{ p.team }}</div>{% endif %}
-        {{ p.content | markdownify }}
+        {{ p.content }}
         {% if p.links %}<div class="link-row">{% include link-buttons.html links=p.links %}</div>{% endif %}
       </article>
       {% endif %}
@@ -56,16 +58,17 @@ author_profile: true
       {% for p in projects %}
       {% if p.image %}{% if p.figure == "wide" %}{% assign layout_class = "project-card--wide" %}{% else %}{% assign layout_class = "project-card--side" %}{% endif %}{% else %}{% assign layout_class = "" %}{% endif %}
       <article class="project-card {{ layout_class }}" id="{{ p.slug }}">
-        <h3 class="project-card__title">{{ p.title }}</h3>
+        <h3 class="project-card__title"><a href="{{ base_path }}{{ p.url }}">{{ p.title }}</a></h3>
         <div class="project-card__meta">
           {% if p.period %}<span>{{ p.period }}</span>{% endif %}
           {% for badge in p.badges %}<span class="pill">{{ badge }}</span>{% endfor %}
           {% if p.team %}<span class="project-card__team">{{ p.team }}</span>{% endif %}
         </div>
         <div class="project-card__body">
-          {% if p.image %}<a class="project-figure" href="{{ base_path }}{{ p.image }}" target="_blank" rel="noopener"><img src="{{ base_path }}{{ p.image }}" alt="{{ p.image_alt | default: p.title }}" loading="lazy"></a>{% endif %}
+          {% comment %} The first figure is the largest thing on screen when the page opens, so it loads right away. {% endcomment %}
+          {% if p.image %}<a class="project-figure" href="{{ base_path }}{{ p.image }}" target="_blank" rel="noopener"><img src="{{ base_path }}{{ p.image }}" alt="{{ p.image_alt | default: p.title }}" width="{{ p.image_size[0] }}" height="{{ p.image_size[1] }}" {% if forloop.first and forloop.parentloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}></a>{% endif %}
           <div class="project-card__text">
-            {{ p.content | markdownify }}
+            {{ p.content }}
             {% if p.links %}<div class="link-row">{% include link-buttons.html links=p.links %}</div>{% endif %}
           </div>
         </div>

@@ -38,6 +38,45 @@ html[data-theme="dark"] {
   --sk-code-bg                : #3c3c3c;
 }
 
+/* The template fades each section in after a delay, which holds back first paint. */
+.masthead,
+.breadcrumbs,
+#main,
+.page__hero,
+.page__hero--overlay,
+.page__footer {
+  animation: none;
+}
+
+/* Keep the site name on one line, so the header already has its final height before
+   the navigation script collapses the links on narrow screens. */
+.greedy-nav .visible-links li:first-child {
+  white-space: nowrap;
+}
+
+/* The header's real height, which the navigation script would otherwise correct after
+   first paint, moving the whole page. */
+body {
+  padding-top: 58px;
+
+  @include breakpoint(768px) {
+    padding-top: 65px;
+  }
+}
+
+.sidebar {
+  @include breakpoint($large) {
+    padding-top: 65px;
+  }
+
+  /* The sidebar is narrow at mid widths, so let long lines wrap instead of clipping them */
+  .author__urls li {
+    @include breakpoint($large) {
+      white-space: normal;
+    }
+  }
+}
+
 /*
    Shared pieces
    ========================================================================== */
@@ -529,6 +568,17 @@ html[data-theme="dark"] {
     }
   }
 
+  /* In narrow boxes a long line of badges wraps, so reserve two lines to keep a row aligned */
+  .mini-card__sub {
+    @include breakpoint(700px) {
+      min-height: 3em;
+    }
+
+    @include breakpoint($x-large) {
+      min-height: 0;
+    }
+  }
+
   .link-row {
     margin-top: 0.5em;
     padding-top: 0;
@@ -572,8 +622,13 @@ html[data-theme="dark"] {
   font-size: 0.88em;
   line-height: 1.55;
 
+  /* The abstract always shows, so reserve room for the longest one to keep boxes in a row aligned */
   @include breakpoint(700px) {
-    min-height: calc(3 * 1.55em);
+    min-height: calc(7 * 1.55em);
+  }
+
+  @include breakpoint($x-large) {
+    min-height: calc(5 * 1.55em);
   }
 }
 
@@ -622,6 +677,22 @@ html[data-theme="dark"] {
 
 .cv-actions {
   margin: -0.2em 0 1.4em;
+}
+
+.archive .btn-link--primary,
+.btn-link--primary {
+  padding: 0.5em 1.1em;
+  font-size: 0.95em;
+  color: var(--sk-card-bg);
+  background: var(--sk-accent-ink);
+  border-color: var(--sk-accent-ink);
+
+  &:hover,
+  &:focus-visible {
+    color: #fff;
+    background: var(--sk-accent);
+    border-color: var(--sk-accent);
+  }
 }
 
 .cv-entry {
@@ -693,4 +764,50 @@ html[data-theme="dark"] {
 .cv-row__when {
   white-space: nowrap;
   color: var(--sk-muted);
+}
+
+/*
+   Sidebar name: a paragraph, so that each page's headings start at its h1
+   ========================================================================== */
+
+.sidebar p.author__name {
+  margin: 0;
+  line-height: 1.2;
+
+  @include breakpoint($large) {
+    margin-top: 10px;
+  }
+}
+
+/*
+   Project pages
+   ========================================================================== */
+
+.project-page {
+  .project-figure {
+    margin-bottom: 1.2em;
+  }
+
+  > p {
+    font-size: 0.95em;
+    line-height: 1.65;
+  }
+
+  .link-row {
+    margin-top: 1em;
+  }
+}
+
+.project-page__back {
+  margin-top: 1.8em;
+}
+
+.project-card__title a,
+.mini-card__title a {
+  color: var(--sk-heading);
+  text-decoration: none !important;
+
+  &:hover {
+    color: var(--sk-accent);
+  }
 }

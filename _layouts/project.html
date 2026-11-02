@@ -1,0 +1,41 @@
+---
+layout: archive
+---
+
+{% comment %}
+  A project's own page, at /research/<name>/, built from its file in _research/.
+  The same text also appears on the Research page. A publication that names this
+  project with `project: <name>` is listed here, and adds citation data to the head.
+{% endcomment %}
+
+{% include base_path %}
+
+<div class="project-page">
+  <div class="project-card__meta">
+    {% if page.period %}<span>{{ page.period }}</span>{% endif %}
+    {% if page.course %}<span>{{ page.course }}</span>{% endif %}
+    {% for badge in page.badges %}<span class="pill">{{ badge }}</span>{% endfor %}
+    {% if page.team %}<span class="project-card__team">{{ page.team }}</span>{% endif %}
+  </div>
+
+  {% if page.image %}
+  <a class="project-figure" href="{{ base_path }}{{ page.image }}" target="_blank" rel="noopener"><img src="{{ base_path }}{{ page.image }}" alt="{{ page.image_alt | default: page.title }}" width="{{ page.image_size[0] }}" height="{{ page.image_size[1] }}"></a>
+  {% endif %}
+
+  {% if page.teaser %}<p>{{ page.teaser | smartify }}</p>{% endif %}
+  {{ content }}
+
+  {% if page.links %}<div class="link-row">{% include link-buttons.html links=page.links %}</div>{% endif %}
+
+  {% assign project_pubs = site.publications | where: "project", page.slug %}
+  {% if project_pubs.size > 0 %}
+  <h2 class="section-title">Publication</h2>
+  <div class="pub-list">
+    {% for pub in project_pubs %}
+      {% include publication-card.html pub=pub %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <p class="project-page__back"><a href="{{ base_path }}/research/"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All research</a></p>
+</div>

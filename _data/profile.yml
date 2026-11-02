@@ -1,0 +1,39 @@
+# Facts about the site's owner for search engines, published as schema.org data
+# by _includes/structured-data.html. The links to other profiles are `social.links`
+# in _config.yml.
+
+given_name: "Sreevatsank"
+family_name: "Kadaveru"
+alternate_names: ["Sreevatsank K"]
+job_title: "Ph.D. Student in Electrical and Computer Engineering"
+orcid: "0009-0008-4670-7737"
+
+affiliation:
+  name: "University of California, San Diego"
+  url: "https://ucsd.edu/"
+  same_as: "https://en.wikipedia.org/wiki/University_of_California,_San_Diego"
+
+lab:
+  name: "WCSNG Lab"
+  url: "https://wcsng.ucsd.edu/"
+
+alumni_of:
+  - name: "University of California, San Diego"
+    same_as: "https://en.wikipedia.org/wiki/University_of_California,_San_Diego"
+  - name: "Indian Institute of Technology Indore"
+    same_as: "https://en.wikipedia.org/wiki/IIT_Indore"
+
+knows_about:
+  - "Physical AI"
+  - "Multimodal AI"
+  - "Large Language Models"
+  - "Robotics"
+  - "AI Systems"
+  - "Edge Computing"
+  - "5G RAN"
+  - "Wireless Systems"
+
+awards:
+  - "Qualcomm Innovation Fellowship 2026"
+  - "Powell Foundation Fellowship 2023"
+  - "Shah Family Entrepreneurial Fellowship 2023"

@@ -1,0 +1,80 @@
+{% comment %}
+  Schema.org data for search engines: who the site is about, and what each page is.
+  A page sets `schema_type` (ProfilePage, CollectionPage; default WebPage). A page with
+  `schema_publications: true` lists all publications, and a project page lists its own.
+{% endcomment %}
+{% assign profile = site.data.profile %}
+{% assign ld_home = site.url | append: site.baseurl | append: "/" %}
+{% assign ld_person = ld_home | append: "#person" %}
+{% assign ld_website = ld_home | append: "#website" %}
+{% assign ld_page = page.url | prepend: site.baseurl | prepend: site.url | replace: "/index.html", "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ ld_website | jsonify }},
+      "url": {{ ld_home | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "alternateName": {{ profile.alternate_names | jsonify }},
+      "inLanguage": {{ site.locale | jsonify }},
+      "publisher": { "@id": {{ ld_person | jsonify }} }
+    },
+    {
+      "@type": {{ page.schema_type | default: "WebPage" | jsonify }},
+      "@id": {{ ld_page | append: "#webpage" | jsonify }},
+      "url": {{ ld_page | jsonify }},
+      "name": {{ page.seo_title | default: page.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "isPartOf": { "@id": {{ ld_website | jsonify }} },
+      "dateModified": {{ site.time | date_to_xmlschema | jsonify }},
+      {% if page.schema_type == "ProfilePage" %}"mainEntity"{% else %}"about"{% endif %}: { "@id": {{ ld_person | jsonify }} }
+    },
+    {
+      "@type": "Person",
+      "@id": {{ ld_person | jsonify }},
+      "name": {{ site.author.name | jsonify }},
+      "givenName": {{ profile.given_name | jsonify }},
+      "familyName": {{ profile.family_name | jsonify }},
+      "alternateName": {{ profile.alternate_names | jsonify }},
+      "url": {{ ld_home | jsonify }},
+      "image": {{ site.author.avatar | prepend: "/images/" | prepend: site.baseurl | prepend: site.url | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "jobTitle": {{ profile.job_title | jsonify }},
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": {{ profile.affiliation.name | jsonify }},
+        "url": {{ profile.affiliation.url | jsonify }},
+        "sameAs": {{ profile.affiliation.same_as | jsonify }}
+      },
+      "memberOf": {
+        "@type": "Organization",
+        "name": {{ profile.lab.name | jsonify }},
+        "url": {{ profile.lab.url | jsonify }}
+      },
+      "alumniOf": [{% for school in profile.alumni_of %}
+        { "@type": "CollegeOrUniversity", "name": {{ school.name | jsonify }}, "sameAs": {{ school.same_as | jsonify }} }{% unless forloop.last %},{% endunless %}{% endfor %}
+      ],
+      "knowsAbout": {{ profile.knows_about | jsonify }},
+      "award": {{ profile.awards | jsonify }},
+      "identifier": { "@type": "PropertyValue", "propertyID": "ORCID", "value": {{ profile.orcid | jsonify }} },
+      "sameAs": {{ site.social.links | jsonify }}
+    }{% if page.schema_publications %}{% assign ld_pubs = site.publications | sort: "date" | reverse %}{% elsif page.collection == "research" %}{% assign ld_pubs = site.publications | where: "project", page.slug %}{% else %}{% assign ld_pubs = nil %}{% endif %}{% for pub in ld_pubs %},
+    {
+      "@type": "ScholarlyArticle",
+      "headline": {{ pub.title | jsonify }},
+      "url": {{ pub.paperurl | jsonify }},{% if pub.doi %}
+      "sameAs": {{ "https://doi.org/" | append: pub.doi | jsonify }},{% endif %}{% if pub.project %}
+      "mainEntityOfPage": {{ site.url | append: site.baseurl | append: "/research/" | append: pub.project | append: "/" | jsonify }},{% endif %}
+      "datePublished": {{ pub.date | date: "%Y-%m-%d" | jsonify }},
+      "publication": {
+        "@type": "PublicationEvent",
+        "name": {{ pub.venue_full | default: pub.venue | jsonify }}{% if pub.location %},
+        "location": {{ pub.location | jsonify }}{% endif %}
+      },
+      "author": [{% for author in pub.authors %}{% if author == site.author.name %}{ "@id": {{ ld_person | jsonify }} }{% else %}{ "@type": "Person", "name": {{ author | jsonify }} }{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}]
+    }{% endfor %}
+  ]
+}
+</script>

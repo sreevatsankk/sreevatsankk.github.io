@@ -8,7 +8,7 @@
   {% if link.icon %}{% assign icon = link.icon %}
   {% elsif label contains "pdf" %}{% assign icon = "fa-solid fa-file-pdf" %}
   {% elsif label contains "paper" or label contains "report" %}{% assign icon = "fa-solid fa-file-lines" %}
-  {% elsif label contains "project" or label contains "website" %}{% assign icon = "fa-solid fa-globe" %}
+  {% elsif label contains "project" or label contains "website" or label contains " page" %}{% assign icon = "fa-solid fa-globe" %}
   {% elsif label contains "poster" %}{% assign icon = "fa-solid fa-image" %}
   {% elsif label contains "proposal" %}{% assign icon = "fa-solid fa-file-signature" %}
   {% elsif label contains "slides" %}{% assign icon = "fa-solid fa-person-chalkboard" %}

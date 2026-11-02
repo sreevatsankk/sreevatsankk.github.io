@@ -10,9 +10,9 @@
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Sreevatsank Kadaveru"
-title_separator          : "-"
+title_separator          : "|"
 name                     : &name "Sreevatsank Kadaveru"
-description              : &description "Sreevatsank Kadaveru is a Ph.D. student at UC San Diego working on AI and Physical AI, with significant systems-building experience and a background in wireless systems."
+description              : "Sreevatsank Kadaveru is a UC San Diego Ph.D. student in AI and Physical AI, with significant systems-building experience and a wireless systems background."
 url                      : https://sreevatsankk.github.io # The base hostname & protocol for your site
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "sreevatsankk/sreevatsankk.github.io"
@@ -91,7 +91,7 @@ publication_category:
 
 # Optional PDF of your CV, placed in /files/ (e.g. "Sreevatsank_Kadaveru_CV.pdf").
 # When set, the CV page shows a download button.
-cv_pdf                   :
+cv_pdf                   : "Sreevatsank_Kadaveru_CV.pdf"
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
@@ -128,7 +128,6 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 : og-image.png   # Social media default site image (lives in /images/)
-og_description           : *description   # Social media default site image description
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -139,6 +138,7 @@ social:
     - "https://www.linkedin.com/in/sreevatsank-k"
     - "https://scholar.google.com/citations?user=dWqKf1AAAAAJ"
     - "https://orcid.org/0009-0008-4670-7737"
+    - "https://www.semanticscholar.org/author/Sreevatsank-Kadaveru/2198273186"
 
 # Analytics
 analytics:
@@ -218,7 +218,8 @@ collections:
   publications:
     output: false
   research:
-    output: false
+    output: true
+    permalink: /research/:name/
 
 
 # Defaults
@@ -229,6 +230,13 @@ defaults:
       type: pages
     values:
       layout: single
+      author_profile: true
+  # _research: each project's own page
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: project
       author_profile: true
 
 

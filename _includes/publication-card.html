@@ -1,12 +1,14 @@
 {% comment %}
   One publication from the `publications` collection, passed as `include.pub`.
-  The site author's name is bolded in the author list.
+  The site author's name is bolded in the author list. The title links to the project
+  page when the publication names one with `project:`; the Paper button stays external.
 {% endcomment %}
+{% include base_path %}
 {% assign pub = include.pub %}
 {% assign bib_id = pub.id | slugify | prepend: "bib-" %}
 <article class="pub-card">
   <h3 class="pub-card__title">
-    {% if pub.paperurl %}<a href="{{ pub.paperurl }}" target="_blank" rel="noopener">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
+    {% if pub.project and pub.project != page.slug %}<a href="{{ base_path }}/research/{{ pub.project }}/">{{ pub.title }}</a>{% elsif pub.paperurl %}<a href="{{ pub.paperurl }}" target="_blank" rel="noopener">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
   </h3>
   {% if pub.authors %}
   <p class="pub-card__authors">

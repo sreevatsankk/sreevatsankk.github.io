@@ -13,7 +13,9 @@ Built with Jekyll on the [AcademicPages](https://github.com/academicpages/academ
 | Homepage news timeline | `_data/news.yml` |
 | Research projects | `_research/*.md`, with sections defined in `_data/research_groups.yml` |
 | Publications | `_publications/*.md` |
-| CV page | `_pages/cv.html`, which mirrors the wording and structure of the resume (set `cv_pdf` in `_config.yml` to add a "Download PDF" button) |
+| CV page | `_pages/cv.html`, which mirrors the wording and structure of the resume |
+| CV PDF and hosted reports, proposals, and posters | `files/` (`cv_pdf` in `_config.yml` names the CV and adds the "Download PDF CV" button) |
+| Search engine data about you (roles, schools, topics, awards) | `_data/profile.yml` |
 | Top navigation | `_data/navigation.yml` |
 | Profile photo, figures, favicons, social preview | `images/` |
 | Site-specific styles | `_sass/layout/_custom.scss` |
@@ -42,6 +44,9 @@ location: "City, Country"
 authors: ["Sreevatsank Kadaveru", "Co-author", "Dinesh Bharadia"]
 selected: true                 # also list it on the homepage
 paperurl: "https://doi.org/..."
+project: name                  # optional: the project in _research/name.md, which then lists this paper
+doi: "10.1145/..."             # optional: used in the citation data
+pdfurl: "https://..."          # optional: a public PDF, used in the citation data
 links:
   - label: Code
     url: https://github.com/...
@@ -52,15 +57,20 @@ bibtex: |
 
 ### Add a research project
 
-Create `_research/name.md`. `group` picks the section on the Research page and `order` sorts projects within it. Figures go in `images/research/`. Use `figure: wide` for very wide figures, which are shown above the text instead of beside it. The Markdown body is the description. Sections marked `compact` in `_data/research_groups.yml` show half-width boxes, and those also marked `expandable` need a one-sentence `teaser`, which is shown until the box is selected.
+Create `_research/name.md`. `group` picks the section on the Research page and `order` sorts projects within it. Figures go in `images/research/`; set `image_size: [width, height]` so the page can reserve their space. Use `figure: wide` for very wide figures, which are shown above the text instead of beside it. The Markdown body is the description. Sections marked `compact` in `_data/research_groups.yml` show half-width boxes, and those also marked `expandable` need a two- or three-sentence `teaser`, an abstract that always shows and that also opens the project's page. The rest of the description appears when the box is selected.
+
+Each project also gets its own page at `/research/name/`, so it needs its own `seo_title` (at most 60 characters) and `description` (110 to 160 characters) for search results.
 
 ```yaml
 ---
 title: "Project: Subtitle"
+seo_title: "Project: Short Subtitle | Sreevatsank Kadaveru"
+description: "One or two sentences that appear under the page's title in search results."
 group: physical-ai
 order: 5
 period: "2026 – present"
 image: /images/research/project.png
+image_size: [1500, 900]
 image_alt: "What the figure shows"
 badges: ["NSDI 2027"]
 team: "with ..."
@@ -71,7 +81,7 @@ links:
 One paragraph about the project.
 ```
 
-Link labels choose their icon automatically. The recognized labels are Paper, PDF, Project Page, Poster, Proposal, Slides, Code, Demo, Video, arXiv, and Report.
+Link labels choose their icon automatically. The recognized labels are Paper, PDF, Project Page, Poster, Proposal, Slides, Code, Demo, Video, arXiv, and Report, and any label ending in "Page" or containing "Website". Put documents in `files/` and link them as `/files/name.pdf` rather than hosting them elsewhere. Never add slide decks.
 
 ## Preview locally
 
