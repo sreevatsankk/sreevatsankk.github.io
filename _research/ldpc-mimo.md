@@ -9,5 +9,8 @@ teaser: "A latency-reliability trade-off in LDPC code selection for video traffi
 image: /images/research/ldpc-mimo.webp
 image_size: [900, 715]
 image_alt: "Multi-cell MIMO system model: base stations in a coordinated cluster serving mission-critical users"
+links:
+  - label: Slides
+    url: /files/LDPC_MIMO_Slides.pdf
 ---
 This work began as a research internship at Télécom Paris and continued as my B.Tech. thesis at IIT Indore with Dr. Prabhat Kumar Upadhyay. I characterized the 5G NR LDPC base graphs across packet sizes. Accumulating packets before encoding recovers much of the lost reliability at the cost of delay, and I mapped the resulting trade-off for video over a multi-cell MIMO system.
